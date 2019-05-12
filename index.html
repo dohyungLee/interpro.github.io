@@ -28,17 +28,16 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><a href="picture.html">사진들</a></li>
-          <li><a href="storage.html">단어장/메모장</a></li>
+          <li><a href="storage.html">단어장</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">메뉴 <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
+              <li><a href="memo.html">To-Do</a></li>
               <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
+              <li><a href="http://naver.com" target="blank">네이버</a></li>
+              <li><a href="http://google.com" target="blank">구글</a></li>
+              <li><a href="http://wvu.wku.ac.kr/" target="blank">원광대 E-CLASS</a></li>
+              <li><a href="http://www.wku.ac.kr/" target="blank">원광대</a></li>
             </ul>
           </li>
         </ul>
@@ -98,6 +97,20 @@
    $('.carousel').carousel({
       interval: false
     })
+  </script>
+
+  <script>
+      $(document).ready(function(){  
+        
+          $(".dropdown-toggle").click(function() { //마우스를 topnav에 오버시
+              $(this).parent().find(".dropdown-menu").slideDown('normal').show(); //subnav가 내려옴.
+              $(this).parent().hover(function() {  
+              }, function(){  
+                  $(this).parent().find(".dropdown-menu").slideUp('fast'); //subnav에서 마우스 벗어났을 시 원위치시킴  
+              });  
+          });  
+        
+      });  
   </script>
   <!-- resource end -->
 </body>
