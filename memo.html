@@ -3,6 +3,8 @@
 <head>
 
     <!-- resource -->  
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet"> 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <!-- end -->
@@ -15,24 +17,26 @@
 </head>
 
 
-<body>
+<body class="font_pen">
 
-    <h1>TO-DO LIST 입니다.</h1>
+    <h1 class="large">TO-DO LIST 입니다.</h1>
     <hr>
     <a href="index.html" style="font-size: 30px;">홈으로 돌아가기</a><br><br>
 
     <div style="margin-left: 30%;  margin-right: 30%;font-size: 30px;">
-        할일 : <input type="text" id="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        <label for="title" class="large">할일 : </label>
+        <input type="text" id="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autocomplete="off">
         <br><br>
-        내용 : <input type="text" id="ct" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><br><br>
-        <input class="btn btn-primary" type="submit" value="저장" id="button" onclick="store()">
-        <input class="btn btn-primary" type="submit" value="전체삭제" id="clear" onclick="clear()">
+        <label for="ct" class="large">내용 : </label>
+        <input type="text" id="ct" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><br><br>
+        <input class="btn btn-primary little_large" type="submit" value="저장" id="button" onclick="store()">
+        <input class="btn btn-primary little_large" type="submit" value="전체삭제" id="clear" onclick="clear()">
         <br><br>
     </div>
 
-    <h3>현재 저장된 할일은 <span id="number"></span>개 입니다.</h3>
+    <h3 class="large">현재 저장된 할일은 <span id="number"></span>개 입니다.</h3>
 
-    <hr><h3>나의 할일!</h3><br>
+    <hr><h3 class="large">나의 할일!</h3><br>
 
     <script>
     var title = document.getElementById("title");
