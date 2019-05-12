@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+    <!-- resource -->  
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <!-- end -->
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>document</title>
+</head>
+
+
+<body>
+
+    <h1>TO-DO LIST 입니다.</h1>
+    <hr>
+    <a href="index.html" style="font-size: 30px;">홈으로 돌아가기</a><br><br>
+
+    <div style="margin-left: 30%;  margin-right: 30%;font-size: 30px;">
+        할일 : <input type="text" id="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        <br><br>
+        내용 : <input type="text" id="ct" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><br><br>
+        <input class="btn btn-primary" type="submit" value="저장" id="button" onclick="store()">
+        <input class="btn btn-primary" type="submit" value="전체삭제" id="clear" onclick="clear()">
+        <br><br>
+    </div>
+
+    <h3>현재 저장된 할일은 <span id="number"></span>개 입니다.</h3>
+
+    <hr><h3>나의 할일!</h3><br>
+
+    <script>
+    var title = document.getElementById("title");
+    var ct = document.getElementById("ct");
+    var val = localStorage.length;
+
+    var buttonClear = document.getElementById("clear");
+    buttonClear.addEventListener("click", clear, false);
+
+
+    function store(){
+        if(!window.localStorage){
+            alert("로컬 스토리지를 지원하지 않습니다.");
+            return;
+        }
+
+       else if(title.value == ""){
+            alert("경고! 할일을 입력하세요!");
+            setTimeout(function(){location.reload();});
+        }
+
+        else{
+            localStorage.setItem(title.value, ct.value);
+        setTimeout(function(){location.reload();});
+        }
+       
+    }
+
+    document.getElementById("number").innerHTML = val;
+    
+    for(var i = 1; i < localStorage.length; i++){
+        var key = localStorage.key(i);
+        var con = localStorage.getItem(key);
+
+        document.writeln("<input type='checkbox' name='check' value='todo' style='width:25px;height:25px;'/>" + "<h4>" + "할일 : " + key + "</h4>");
+        document.write("내용 : " + con);
+        document.write("<br><br>");
+    }
+
+    function clear(){
+        localStorage.clear();
+        setTimeout(function(){location.reload();});
+    }
+
+    
+    </script>
+
+    
+</body>
+</html>

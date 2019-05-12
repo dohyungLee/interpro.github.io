@@ -1,46 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
+
+    <!-- resource -->  
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <!-- end -->
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>세션 스토리지에 쓰기/읽기</title>
+    <title>document</title>
 </head>
-<body>
-    <h3>세션 스토리지에 구입 리스트 저장/검색</h3>
-    <hr>
-    품목명 : <input id="item" type="text">
-    개수 : <input id="count" type="text">
-    <button id="save" onclick="store()">저장</button>
-    <button id="retrieve" onclick="retrieve()">검색</button>
-    <br>
 
-    <a href="index.html">홈으로 돌아가기</a>
+
+<body>
+        <h1>단어장 입니다.</h1>
+        <hr>
+        <a href="index.html" style="font-size: 30px;">홈으로 돌아가기</a><br><br>
+
+    <div style="margin-left: 30%;  margin-right: 30%;font-size: 30px;">
+        단어 : <input type="text" id="word" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+        <br><br>
+        해석 : <input type="text" id="trans" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><br><br>
+
+        <input class="btn btn-primary" type="submit" value="저장" id="button" onclick="store()">
+        <input class="btn btn-primary" type="submit" value="전체삭제" id="clear" onclick="clear()">
+        <input class="btn btn-primary" type="submit" value="가리기" id="cover" onclick="cover()">
+        <br><br>
+    </div>
+    
+
+    <h3>현재 저장된 단어는 <span id="number"></span>개 입니다.</h3>
+    <hr>
+
 
     <script>
-    var item = document.getElementById("item");
-    var count = document.getElementById("count");
+            var word = document.getElementById("word");
+            var trans = document.getElementById("trans");
+            var val = sessionStorage.length-1;
+        
+            var buttonClear = document.getElementById("clear");
+            buttonClear.addEventListener("click", clear, false);
 
-    function store(){
-        if(!window.localStorage){
-            alert("로컬 스토리지를 지원하지 않습니다.");
-            return;
-        }
-        localStorage.setItem(item.value, count.value);
-    }
+            var buttonCover = document.getElementById("cover");
+            buttonCover.addEventListener("click", cover, false);
+        
+        
+            function store(){
+                if(!window.sessionStorage){
+                    alert("세션 스토리지를 지원하지 않습니다.");
+                    return;
+                }
+        
+               else if(word.value == ""){
+                    alert("경고! 단어를 입력하세요!");
+                    setTimeout(function(){location.reload();});
+                }
+        
+                else{
+                    sessionStorage.setItem(word.value, trans.value);
+                setTimeout(function(){location.reload();});
+                }
+               
+            }
+            // -1값이 출력되면 강제로 0으로 초기화
+            if(val == -1)
+                val = 0;
+            document.getElementById("number").innerHTML = val;
+            
+            for(var j = 0; j < sessionStorage.length; j++){
+                var wd = sessionStorage.key(j);
+                var co = sessionStorage.getItem(wd);
+                // 이러한 문장이 안나올때만 출력
+                if(wd !== "IsThisFirstTime_Log_From_LiveServer"){
+                    document.write("<div style='font-size : 30px;'>"+ "단어 : " + wd +"</div>");
+                    document.write("<div style='font-size : 30px;' id='content'>" + "해석 : " + co + "</div>");
+                    document.write("<br><br>");
+                }
+            }
+        
+            function clear(){
+                sessionStorage.clear();
+                setTimeout(function(){location.reload();});
+            }  
+            
+            function cover(){
+                for(var j = 0; j < sessionStorage.length; j++){
+                var wd = sessionStorage.key(j);
+                var co = sessionStorage.getItem(wd);
+                // 이러한 문장이 안나올때만 출력
+                if(wd !== "IsThisFirstTime_Log_From_LiveServer"){
+                    document.write("<div style='font-size : 30px;'>"+ "단어 : " + wd +"</div>");
+                    document.write("<div style='font-size : 30px;'>" + "해석 : <span style='background-color : black;'>" + co + "</span></div>");
+                    document.write("<br><br>");
+                }
+            }
+            document.write("<a href='storage.html'>돌아가기</a>");
+            }
+            </script>
 
-    function retrieve(){
-        if(!window.localStorage){
-            alert("로컬 스토리지를 지원하지 않습니다.");
-            return;
-        }
-        var val = localStorage.getItem(item.value);
-        if(val == null)
-            alert(item.value + "는 구입 리스트에 없습니다.");
-        else
-            count.value = val;
-    }
-    </script>
 
 </body>
 </html>
