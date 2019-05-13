@@ -13,30 +13,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>document</title>
+    <title>Myblog</title>
 </head>
 
 
-<body class="font_pen">
+<body>
 
-    <h1 class="large">TO-DO LIST 입니다.</h1>
+    <h1 class="large font_pen">TO-DO LIST 입니다.</h1>
     <hr>
-    <a href="index.html" style="font-size: 30px;">홈으로 돌아가기</a><br><br>
+    <a href="index.html" style="font-size: 30px;" class="font_pen">홈으로 돌아가기</a><br><br>
 
     <div style="margin-left: 30%;  margin-right: 30%;font-size: 30px;">
-        <label for="title" class="large">할일 : </label>
+        <label for="title" class="large font_pen">할일 : </label>
         <input type="text" id="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autocomplete="off">
         <br><br>
-        <label for="ct" class="large">내용 : </label>
+        <label for="ct" class="large font_pen">내용 : </label>
         <input type="text" id="ct" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"><br><br>
-        <input class="btn btn-primary little_large" type="submit" value="저장" id="button" onclick="store()">
-        <input class="btn btn-primary little_large" type="submit" value="전체삭제" id="clear" onclick="clear()">
+        <input class="btn btn-primary little_large font_pen" type="submit" value="저장" id="button" onclick="store()">
+        <input class="btn btn-primary little_large font_pen" type="submit" value="전체삭제" id="clear" onclick="clear()">
         <br><br>
     </div>
 
-    <h3 class="large">현재 저장된 할일은 <span id="number"></span>개 입니다.</h3>
+    <h3 class="large font_pen">현재 저장된 할일은 <span id="number"></span>개 입니다.</h3>
 
-    <hr><h3 class="large">나의 할일!</h3><br>
+    <hr><h3 class="large font_pen">나의 할일!</h3><br>
 
     <script>
     var title = document.getElementById("title");
@@ -67,12 +67,12 @@
 
     document.getElementById("number").innerHTML = val;
     
-    for(var i = 1; i < localStorage.length; i++){
+    for(var i = 0; i < localStorage.length; i++){
         var key = localStorage.key(i);
         var con = localStorage.getItem(key);
 
-        document.writeln("<input type='checkbox' name='check' value='todo' style='width:25px;height:25px;'/>" + "<h4>" + "할일 : " + key + "</h4>");
-        document.write("내용 : " + con);
+        document.writeln("<input type='checkbox' name='check' value='todo' style='width:25px;height:25px;'/>" + "<h4 class='font_pen'>" + "할일 : " + key + "</h4>");
+        document.write("<h4 class='font_pen'>내용 : " + con + "</h4>");
         document.write("<br><br>");
     }
 

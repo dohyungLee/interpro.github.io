@@ -13,30 +13,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>document</title>
+    <title>Myblog</title>
 </head>
 
 
-<body class="font_pen">
-        <h1 class="large">단어장 입니다.</h1>
+<body>
+        <h1 class="large font_pen">단어장 입니다.</h1>
         <hr>
-        <a href="index.html" style="font-size: 30px;">홈으로 돌아가기</a><br><br>
+        <a href="index.html" style="font-size: 30px;" class="font_pen">홈으로 돌아가기</a><br><br>
 
     <div style="margin-left: 30%;  margin-right: 30%;font-size: 30px;">
-        <label for="word" class="large">단어 : </label>    
+        <label for="word" class="large font_pen">단어 : </label>    
         <input type="text" id="word" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autocomplete="off">
         <br><br>
-        <label for="trans" class="large">해석 : </label>
+        <label for="trans" class="large font_pen">해석 : </label>
         <input type="text" id="trans" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autocomplete="off"><br><br>
 
-        <input class="btn btn-primary little_large" type="submit" value="저장" id="button" onclick="store()">
-        <input class="btn btn-primary little_large" type="submit" value="전체삭제" id="clear" onclick="clear()">
-        <input class="btn btn-primary little_large" type="submit" value="가리기" id="cover" onclick="cover()">
+        <input class="btn btn-primary little_large font_pen" type="submit" value="저장" id="button" onclick="store()">
+        <input class="btn btn-primary little_large font_pen" type="submit" value="전체삭제" id="clear" onclick="clear()">
+        <input class="btn btn-primary little_large font_pen" type="submit" value="가리기" id="cover" onclick="cover()">
         <br><br>
     </div>
     
 
-    <h3 class="large">현재 저장된 단어는 <span id="number"></span>개 입니다.</h3>
+    <h3 class="large font_pen">현재 저장된 단어는 <span id="number"></span>개 입니다.</h3>
     <hr>
 
 
@@ -79,8 +79,8 @@
                 var co = sessionStorage.getItem(wd);
                 // 이러한 문장이 안나올때만 출력
                 if(wd !== "IsThisFirstTime_Log_From_LiveServer"){
-                    document.write("<div style='font-size : 30px;'>"+ "단어 : " + wd +"</div>");
-                    document.write("<div style='font-size : 30px;' id='content'>" + "해석 : " + co + "</div>");
+                    document.write("<div style='font-size : 30px;' class='font_pen'>"+ "단어 : " + wd +"</div>");
+                    document.write("<div style='font-size : 30px;' id='content'  class='font_pen'>" + "해석 : " + co + "</div>");
                     document.write("<br><br>");
                 }
             }
