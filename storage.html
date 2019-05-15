@@ -41,69 +41,69 @@
 
 
     <script>
-            var word = document.getElementById("word");
-            var trans = document.getElementById("trans");
-            var val = sessionStorage.length-1;
-        
-            var buttonClear = document.getElementById("clear");
-            buttonClear.addEventListener("click", clear, false);
+        var word = document.getElementById("word");
+        var trans = document.getElementById("trans");
+        var val = sessionStorage.length-1;
+    
+        var buttonClear = document.getElementById("clear");
+        buttonClear.addEventListener("click", clear, false);
 
-            var buttonCover = document.getElementById("cover");
-            buttonCover.addEventListener("click", cover, false);
-        
-        
-            function store(){
-                if(!window.sessionStorage){
-                    alert("세션 스토리지를 지원하지 않습니다.");
-                    return;
-                }
-        
-               else if(word.value == ""){
-                    alert("경고! 단어를 입력하세요!");
-                    setTimeout(function(){location.reload();});
-                }
-        
-                else{
-                    sessionStorage.setItem(word.value, trans.value);
-                setTimeout(function(){location.reload();});
-                }
-               
+        var buttonCover = document.getElementById("cover");
+        buttonCover.addEventListener("click", cover, false);
+    
+    
+        function store(){
+            if(!window.sessionStorage){
+                alert("세션 스토리지를 지원하지 않습니다.");
+                return;
             }
-            // -1값이 출력되면 강제로 0으로 초기화
-            if(val == -1)
-                val = 0;
-            document.getElementById("number").innerHTML = val;
+    
+            else if(word.value == ""){
+                alert("경고! 단어를 입력하세요!");
+                setTimeout(function(){location.reload();});
+            }
+    
+            else{
+                sessionStorage.setItem(word.value, trans.value);
+            setTimeout(function(){location.reload();});
+            }
             
+        }
+        // -1값이 출력되면 강제로 0으로 초기화
+        if(val == -1)
+            val = 0;
+        document.getElementById("number").innerHTML = val;
+        
+        for(var j = 0; j < sessionStorage.length; j++){
+            var wd = sessionStorage.key(j);
+            var co = sessionStorage.getItem(wd);
+            // 이러한 문장이 안나올때만 출력
+            if(wd !== "IsThisFirstTime_Log_From_LiveServer"){
+                document.write("<div style='font-size : 30px;' class='font_pen'>"+ "단어 : " + wd +"</div>");
+                document.write("<div style='font-size : 30px;' id='content'  class='font_pen'>" + "해석 : " + co + "</div>");
+                document.write("<br><br>");
+            }
+        }
+    
+        function clear(){
+            sessionStorage.clear();
+            setTimeout(function(){location.reload();});
+        }  
+        
+        function cover(){
             for(var j = 0; j < sessionStorage.length; j++){
-                var wd = sessionStorage.key(j);
-                var co = sessionStorage.getItem(wd);
-                // 이러한 문장이 안나올때만 출력
-                if(wd !== "IsThisFirstTime_Log_From_LiveServer"){
-                    document.write("<div style='font-size : 30px;' class='font_pen'>"+ "단어 : " + wd +"</div>");
-                    document.write("<div style='font-size : 30px;' id='content'  class='font_pen'>" + "해석 : " + co + "</div>");
-                    document.write("<br><br>");
-                }
+            var wd = sessionStorage.key(j);
+            var co = sessionStorage.getItem(wd);
+            // 이러한 문장이 안나올때만 출력
+            if(wd !== "IsThisFirstTime_Log_From_LiveServer"){
+                document.write("<div style='font-size : 30px;'>"+ "단어 : " + wd +"</div>");
+                document.write("<div style='font-size : 30px;'>" + "해석 : <span style='background-color : black;'>" + co + "</span></div>");
+                document.write("<br><br>");
             }
-        
-            function clear(){
-                sessionStorage.clear();
-                setTimeout(function(){location.reload();});
-            }  
-            
-            function cover(){
-                for(var j = 0; j < sessionStorage.length; j++){
-                var wd = sessionStorage.key(j);
-                var co = sessionStorage.getItem(wd);
-                // 이러한 문장이 안나올때만 출력
-                if(wd !== "IsThisFirstTime_Log_From_LiveServer"){
-                    document.write("<div style='font-size : 30px;'>"+ "단어 : " + wd +"</div>");
-                    document.write("<div style='font-size : 30px;'>" + "해석 : <span style='background-color : black;'>" + co + "</span></div>");
-                    document.write("<br><br>");
-                }
-            }
-            document.write("<a href='storage.html'>돌아가기</a>");
-            }
-            </script>
+        }
+        document.write("<a href='storage.html'>돌아가기</a>");
+        }
+    </script>
 
 
 </body>
