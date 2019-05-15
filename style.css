@@ -42,3 +42,21 @@ h1{
 hr{
     border: 5px solid black;
 }
+
+.font_pen{
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 3.5rem;
+  }
+
+.font_yeon{
+    font-family: 'Yeon Sung', cursive;
+    font-size: 1.8rem;
+}
+
+.large{
+    font-size: 5rem;
+}
+
+.little_large{
+    font-size: 2rem;
+}
